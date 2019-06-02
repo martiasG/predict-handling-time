@@ -1,12 +1,8 @@
 import numpy as np
 import tensorflow as tf
-from sklearn.model_selection import train_test_split
 import keras as k
-from keras import layers
-from keras.layers import Input, Dense, Activation, BatchNormalization, Dropout
+from keras.layers import Input, Dense
 from keras.models import Model, Sequential
-from keras.utils import to_categorical
-from keras.callbacks import TensorBoard
 
 def load_model():
 	model = Sequential()
