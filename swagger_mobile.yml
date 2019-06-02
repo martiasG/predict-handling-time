@@ -1,0 +1,96 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /mobile
+
+definitions:
+  SpokenLanguages:
+    type: array
+    items:
+      properties:
+        defaultLanguage:
+          type: string
+          default: english
+        proficency:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 5
+
+# Paths supported by the server application
+paths:
+  /people:
+    get:
+      operationId: api_methods.people.read
+      tags:
+        - People
+      summary: The people data structure supported by the server application
+      description: Read the list of people
+      responses:
+        200:
+          description: Successful read people list operation
+          schema:
+            type: array
+            items:
+              properties:
+                fname:
+                  type: string
+                lname:
+                  type: string
+                timestamp:
+                  type: string
+    post:
+          operationId: api_methods.people.create
+          tags:
+            - People
+          summary: Create a person and add it to the people list
+          description: Create a new person in the people list
+          parameters:
+            - name: person
+              in: body
+              description: Person to create
+              required: True
+              schema:
+                type: array
+                items:
+                  properties:
+                    fname:
+                      type: string
+                      pattern: '[a-z]'
+                      minLength: 4
+                      maxLength: 10
+                      description: First name of person to create
+                    lname:
+                      type: string
+                      pattern: '[a-z]'
+                      minLength: 4
+                      maxLength: 10
+                      description: Last name of person to create
+                    email:
+                      type: string
+                      pattern: '[a-z]@[a-z].com'
+                    age:
+                      type: integer
+                      format: int32
+                      minimum: 15
+                      exclusiveMinimum: False
+                      default: 15
+                      maximum: 17
+                      exclusiveMaximum: False
+                    avatarBase64PNG:
+                      type: string
+                      format: byte
+                    languajes:
+                      $ref: '#/definitions/SpokenLanguages'
+                  required:
+                    - lname
+          responses:
+            201:
+              description: Successfully created person in list

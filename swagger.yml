@@ -1,0 +1,55 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+paths:
+  /predict:
+    get:
+      summary: Gets delivery time for item order
+      operationId: api_methods.model_actions.predict
+      parameters:
+      - in: query
+        name: created_hour
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 24
+        required: True
+      - in: query
+        name: handling_hour
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 24
+        required: True
+      - in: query
+        name: zip_code
+        type: string
+        format: '[0-9]'
+        required: True
+      - in: query
+        name: order_cost
+        type: integer
+        format: int32
+        minimum: 0
+        required: True
+      tags:
+        - Predictions
+      description: Returns the amount of hours the item will be delivered to the user afther the aprobation time
+      responses:
+        200:
+          description: Successful get the prediction for that order
+          schema:
+            properties:
+              ht_order:
+                type: integer
+                format: int32
+
