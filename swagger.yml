@@ -31,11 +31,6 @@ paths:
         maximum: 23
         required: True
       - in: query
-        name: zip_code
-        type: string
-        pattern: '^\d{4}$'
-        required: True
-      - in: query
         name: order_cost
         type: integer
         format: int32
