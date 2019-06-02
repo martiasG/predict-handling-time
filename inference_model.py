@@ -12,9 +12,7 @@ from keras.callbacks import TensorBoard
 
 def load_model():
 	model = Sequential()
-	model.add(Dense(8196, input_dim=4, activation='relu'))
-	model.add(Dense(4096, activation='relu'))
-	model.add(Dense(2048, activation='relu'))
+	model.add(Dense(2048, input_dim=4, activation='relu'))
 	model.add(Dense(1024, activation='relu'))
 	model.add(Dense(512, activation='relu'))
 	model.add(Dense(256, activation='relu'))
@@ -26,10 +24,9 @@ def load_model():
 	model.add(Dense(4, activation='relu'))
 	model.add(Dense(1, activation='relu'))
 
-	model.load_weights('params_model_10_nonorm.h5')
+	model.load_weights('params_model_300_no_norm.h5')
+	# model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
 
 	return model
 
 model = load_model()
-
-print(model.predict(batch_size=1024, verbose=1, x=np.array([[15,9,'1440',970]]))[0][0])

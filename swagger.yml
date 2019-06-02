@@ -21,25 +21,25 @@ paths:
         type: integer
         format: int32
         minimum: 0
-        maximum: 24
+        maximum: 23
         required: True
       - in: query
         name: handling_hour
         type: integer
         format: int32
         minimum: 0
-        maximum: 24
+        maximum: 23
         required: True
       - in: query
         name: zip_code
         type: string
-        format: '[0-9]'
+        pattern: '^\d{4}$'
         required: True
       - in: query
         name: order_cost
         type: integer
         format: int32
-        minimum: 0
+        minimum: 1
         required: True
       tags:
         - Predictions
