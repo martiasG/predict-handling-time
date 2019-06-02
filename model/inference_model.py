@@ -12,10 +12,7 @@ from keras.callbacks import TensorBoard
 
 def load_model():
 	model = Sequential()
-	model.add(Dense(2048, input_dim=3, activation='relu'))
-	model.add(Dense(1024, activation='relu'))
-	model.add(Dense(512, activation='relu'))
-	model.add(Dense(256, activation='relu'))
+	model.add(Dense(256, input_dim=4, activation='relu'))
 	model.add(Dense(128, activation='relu'))
 	model.add(Dense(64, activation='relu'))
 	model.add(Dense(32, activation='relu'))
